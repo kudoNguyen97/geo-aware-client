@@ -1,13 +1,25 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { CustomerForm } from "@/components/customer/CustomerForm";
+import { ConfigProvider } from "antd";
+import viVN from "antd/locale/vi_VN";
+import "dayjs/locale/vi";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <ConfigProvider locale={viVN}>
+      <div className="min-h-screen bg-background p-4 md:p-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-8 text-center">
+            <h1 className="mb-2 text-4xl font-bold text-foreground">
+              Quản lý khách hàng
+            </h1>
+            <p className="text-lg text-muted-foreground">
+              Hệ thống quản lý thông tin khách hàng toàn diện
+            </p>
+          </div>
+          <CustomerForm />
+        </div>
       </div>
-    </div>
+    </ConfigProvider>
   );
 };
 
