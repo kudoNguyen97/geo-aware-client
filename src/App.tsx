@@ -8,6 +8,9 @@ import viVN from "antd/locale/vi_VN";
 import "dayjs/locale/vi";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import CustomerListPage from "./pages/CustomerListPage";
+import CustomerCreatePage from "./pages/CustomerCreatePage";
+import CustomerEditPage from "./pages/CustomerEditPage";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +23,9 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/customers" element={<CustomerListPage />} />
+            <Route path="/customers/create" element={<CustomerCreatePage />} />
+            <Route path="/customers/edit/:id" element={<CustomerEditPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
