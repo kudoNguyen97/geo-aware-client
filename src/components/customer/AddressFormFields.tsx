@@ -59,16 +59,16 @@ export const AddressFormFields = ({ prefix, isNested = false }: AddressFormField
     setDistrictCode("");
     
     form.setFieldValue(getFieldName("regionCode"), option.code);
-    form.setFieldValue(getFieldName("country"), "");
-    form.setFieldValue(getFieldName("countryCode"), "");
-    form.setFieldValue(getFieldName("stateProvince"), "");
-    form.setFieldValue(getFieldName("stateProvinceCode"), "");
-    form.setFieldValue(getFieldName("city"), "");
-    form.setFieldValue(getFieldName("cityCode"), "");
-    form.setFieldValue(getFieldName("district"), "");
-    form.setFieldValue(getFieldName("districtCode"), "");
-    form.setFieldValue(getFieldName("ward"), "");
-    form.setFieldValue(getFieldName("wardCode"), "");
+    form.setFieldValue(getFieldName("country"), undefined);
+    form.setFieldValue(getFieldName("countryCode"), undefined);
+    form.setFieldValue(getFieldName("stateProvince"), undefined);
+    form.setFieldValue(getFieldName("stateProvinceCode"), undefined);
+    form.setFieldValue(getFieldName("city"), undefined);
+    form.setFieldValue(getFieldName("cityCode"), undefined);
+    form.setFieldValue(getFieldName("district"), undefined);
+    form.setFieldValue(getFieldName("districtCode"), undefined);
+    form.setFieldValue(getFieldName("ward"), undefined);
+    form.setFieldValue(getFieldName("wardCode"), undefined);
   };
 
   const handleCountryChange = (value: string, option: any) => {
@@ -77,14 +77,14 @@ export const AddressFormFields = ({ prefix, isNested = false }: AddressFormField
     setDistrictCode("");
     
     form.setFieldValue(getFieldName("countryCode"), option.code);
-    form.setFieldValue(getFieldName("stateProvince"), "");
-    form.setFieldValue(getFieldName("stateProvinceCode"), "");
-    form.setFieldValue(getFieldName("city"), "");
-    form.setFieldValue(getFieldName("cityCode"), "");
-    form.setFieldValue(getFieldName("district"), "");
-    form.setFieldValue(getFieldName("districtCode"), "");
-    form.setFieldValue(getFieldName("ward"), "");
-    form.setFieldValue(getFieldName("wardCode"), "");
+    form.setFieldValue(getFieldName("stateProvince"), undefined);
+    form.setFieldValue(getFieldName("stateProvinceCode"), undefined);
+    form.setFieldValue(getFieldName("city"), undefined);
+    form.setFieldValue(getFieldName("cityCode"), undefined);
+    form.setFieldValue(getFieldName("district"), undefined);
+    form.setFieldValue(getFieldName("districtCode"), undefined);
+    form.setFieldValue(getFieldName("ward"), undefined);
+    form.setFieldValue(getFieldName("wardCode"), undefined);
   };
 
   const handleProvinceChange = (value: string, option: any) => {
@@ -93,18 +93,18 @@ export const AddressFormFields = ({ prefix, isNested = false }: AddressFormField
     
     form.setFieldValue(getFieldName("stateProvinceCode"), option.code);
     form.setFieldValue(getFieldName("cityCode"), option.code);
-    form.setFieldValue(getFieldName("district"), "");
-    form.setFieldValue(getFieldName("districtCode"), "");
-    form.setFieldValue(getFieldName("ward"), "");
-    form.setFieldValue(getFieldName("wardCode"), "");
+    form.setFieldValue(getFieldName("district"), undefined);
+    form.setFieldValue(getFieldName("districtCode"), undefined);
+    form.setFieldValue(getFieldName("ward"), undefined);
+    form.setFieldValue(getFieldName("wardCode"), undefined);
   };
 
   const handleDistrictChange = (value: string, option: any) => {
     setDistrictCode(option.code);
     
     form.setFieldValue(getFieldName("districtCode"), option.code);
-    form.setFieldValue(getFieldName("ward"), "");
-    form.setFieldValue(getFieldName("wardCode"), "");
+    form.setFieldValue(getFieldName("ward"), undefined);
+    form.setFieldValue(getFieldName("wardCode"), undefined);
   };
 
   const handleWardChange = (value: string, option: any) => {
