@@ -188,7 +188,15 @@ export const CustomerEditForm = ({ customer, loading = false }: CustomerEditForm
     {
       key: "serviceFee",
       label: "Phí dịch vụ",
-      children: <ServiceFeeTab form={form} />,
+      children: <ServiceFeeTab 
+        form={form} 
+        initialData={{
+          serviceCode: customer.serviceCode,
+          serviceFee: customer.serviceFee,
+          vatFee: customer.vatFee,
+          sumCharge: customer.sumCharge,
+        }}
+      />,
     },
   ];
 

@@ -67,6 +67,10 @@ export interface Customer {
   addresses: Address;
   exportInformations: ContactInformation[];
   importInformations: ContactInformation[];
+  serviceCode?: string;
+  serviceFee?: number;
+  vatFee?: number;
+  sumCharge?: number;
 }
 
 export interface CreateCustomerPayload {

@@ -100,6 +100,10 @@ export const mockCustomers: Customer[] = [
         },
       },
     ],
+    serviceCode: "EXPRESS",
+    serviceFee: 150000,
+    vatFee: 15000,
+    sumCharge: 172500,
   },
   {
     id: "cust-002",

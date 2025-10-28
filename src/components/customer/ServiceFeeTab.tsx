@@ -20,16 +20,60 @@ interface FeeDetailResponse {
 
 interface ServiceFeeTabProps {
   form: any;
+  initialData?: {
+    serviceCode?: string;
+    serviceFee?: number;
+    vatFee?: number;
+    sumCharge?: number;
+  };
 }
 
-export const ServiceFeeTab = ({ form }: ServiceFeeTabProps) => {
+export const ServiceFeeTab = ({ form, initialData }: ServiceFeeTabProps) => {
   const [isButtonActive, setIsButtonActive] = useState(false);
   const [services, setServices] = useState<any[]>([]);
   const [loadingServices, setLoadingServices] = useState(false);
-  const [selectedService, setSelectedService] = useState<string | undefined>(undefined);
+  const [selectedService, setSelectedService] = useState<string | undefined>(initialData?.serviceCode);
   const [feeDetail, setFeeDetail] = useState<FeeDetailResponse | null>(null);
   const [loadingFeeDetail, setLoadingFeeDetail] = useState(false);
   const [checkedExtraFees, setCheckedExtraFees] = useState<Set<number>>(new Set());
+
+  // Auto-populate data in edit mode
+  useEffect(() => {
+    if (initialData?.serviceCode && initialData?.serviceFee !== undefined && initialData?.vatFee !== undefined) {
+      // Auto-fetch services and fee detail when in edit mode
+      const loadInitialData = async () => {
+        setLoadingServices(true);
+        try {
+          const servicesData = await fetchMockServices();
+          setServices(servicesData);
+          
+          // Auto-fetch fee detail for the selected service
+          if (initialData.serviceCode) {
+            setLoadingFeeDetail(true);
+            try {
+              const data: FeeDetailResponse = await fetchMockFeeDetail(initialData.serviceCode);
+              setFeeDetail(data);
+              
+              // Set form values from initial data
+              form.setFieldValue("serviceFee", initialData.serviceFee);
+              form.setFieldValue("vatFee", initialData.vatFee);
+              form.setFieldValue("sumCharge", initialData.sumCharge);
+            } catch (error) {
+              message.error("Không thể tải chi tiết phí dịch vụ");
+            } finally {
+              setLoadingFeeDetail(false);
+            }
+          }
+        } catch (error) {
+          message.error("Không thể tải danh sách dịch vụ");
+        } finally {
+          setLoadingServices(false);
+        }
+      };
+      
+      loadInitialData();
+    }
+  }, [initialData, form]);
 
   // Check if required fields are filled
   useEffect(() => {
