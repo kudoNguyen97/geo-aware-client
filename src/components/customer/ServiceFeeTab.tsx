@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Form, Button, Select, Table, Checkbox, InputNumber, Card, Space, message } from "antd";
 import type { CheckboxChangeEvent } from "antd/es/checkbox";
+import { fetchMockServices, fetchMockFeeDetail } from "@/data/mockServices";
 
 interface ExtraFee {
   type: string;
@@ -69,11 +70,13 @@ export const ServiceFeeTab = ({ form }: ServiceFeeTabProps) => {
   const fetchServiceList = async () => {
     setLoadingServices(true);
     try {
-      // Replace with actual API endpoint
-      const response = await fetch("/api/services");
-      if (!response.ok) throw new Error("Failed to fetch services");
-      const data = await response.json();
+      // Using mock data - replace with actual API endpoint in production
+      // const response = await fetch("/api/services");
+      // if (!response.ok) throw new Error("Failed to fetch services");
+      // const data = await response.json();
+      const data = await fetchMockServices();
       setServices(data);
+      message.success("Tải danh sách dịch vụ thành công");
     } catch (error) {
       message.error("Không thể tải danh sách dịch vụ");
     } finally {
@@ -84,10 +87,11 @@ export const ServiceFeeTab = ({ form }: ServiceFeeTabProps) => {
   const fetchFeeDetail = async (serviceCode: string) => {
     setLoadingFeeDetail(true);
     try {
-      // Replace with actual API endpoint
-      const response = await fetch(`/api/services/${serviceCode}/fee-detail`);
-      if (!response.ok) throw new Error("Failed to fetch fee detail");
-      const data: FeeDetailResponse = await response.json();
+      // Using mock data - replace with actual API endpoint in production
+      // const response = await fetch(`/api/services/${serviceCode}/fee-detail`);
+      // if (!response.ok) throw new Error("Failed to fetch fee detail");
+      // const data: FeeDetailResponse = await response.json();
+      const data: FeeDetailResponse = await fetchMockFeeDetail(serviceCode);
       
       setFeeDetail(data);
       setCheckedExtraFees(new Set());
@@ -98,6 +102,7 @@ export const ServiceFeeTab = ({ form }: ServiceFeeTabProps) => {
       
       // Calculate initial sum
       calculateSumCharge(data.serviceFee, data.vatFee, new Set());
+      message.success("Tải chi tiết phí thành công");
     } catch (error) {
       message.error("Không thể tải chi tiết phí dịch vụ");
     } finally {
