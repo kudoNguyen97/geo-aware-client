@@ -54,10 +54,6 @@ export const ContactInformationForm = ({ name, title }: ContactInformationFormPr
               <Form.Item
                 name={[field.name, "phone"]}
                 label="Số điện thoại"
-                rules={[
-                  { required: true, message: "Vui lòng nhập số điện thoại" },
-                  { pattern: /^[0-9+\-\s()]+$/, message: "Số điện thoại không hợp lệ" },
-                ]}
               >
                 <Input placeholder="Số điện thoại" />
               </Form.Item>
@@ -65,10 +61,6 @@ export const ContactInformationForm = ({ name, title }: ContactInformationFormPr
               <Form.Item
                 name={[field.name, "email"]}
                 label="Email"
-                rules={[
-                  { required: true, message: "Vui lòng nhập email" },
-                  { type: "email", message: "Email không hợp lệ" },
-                ]}
               >
                 <Input placeholder="Email" />
               </Form.Item>

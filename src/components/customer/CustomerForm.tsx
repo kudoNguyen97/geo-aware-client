@@ -3,6 +3,7 @@ import { useMutation } from "@tanstack/react-query";
 import { CustomerStatus, PartnerType, CreateCustomerPayload } from "@/types/customer";
 import { AddressFormFields } from "./AddressFormFields";
 import { ContactInformationForm } from "./ContactInformationForm";
+import { ServiceFeeTab } from "./ServiceFeeTab";
 
 const createCustomer = async (payload: CreateCustomerPayload) => {
   // Replace with your actual API endpoint
@@ -158,6 +159,11 @@ export const CustomerForm = () => {
       children: (
         <ContactInformationForm name="importInformations" title="Thông tin nhập khẩu" />
       ),
+    },
+    {
+      key: "serviceFee",
+      label: "Phí dịch vụ",
+      children: <ServiceFeeTab form={form} />,
     },
   ];
 

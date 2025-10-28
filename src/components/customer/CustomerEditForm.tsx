@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { CustomerStatus, PartnerType, CreateCustomerPayload, Customer } from "@/types/customer";
 import { AddressFormFields } from "./AddressFormFields";
 import { ContactInformationForm } from "./ContactInformationForm";
+import { ServiceFeeTab } from "./ServiceFeeTab";
 
 const updateCustomer = async (payload: CreateCustomerPayload) => {
   // Replace with your actual API endpoint
@@ -183,6 +184,11 @@ export const CustomerEditForm = ({ customer, loading = false }: CustomerEditForm
       children: (
         <ContactInformationForm name="importInformations" title="Thông tin nhập khẩu" />
       ),
+    },
+    {
+      key: "serviceFee",
+      label: "Phí dịch vụ",
+      children: <ServiceFeeTab form={form} />,
     },
   ];
 
